@@ -1,5 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+_________________________
+# Pablo's outcome
+
+* I would have love to provide integration of lazy loading components. (E.g.) have a list of available widgets for selectioon, maped to import urls. This way when a user adds a new widget, an actual instance of a widget is created. 
+* I used MaterialUI, didn't change styles so much. I thought this wasn't a strong requirement. If so I would use styled-components, in combination with some modular .scss per component if needed. Having  a sass setup would allow to use mixins, and reuse styles between components.  
+
+
+_________________________
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:

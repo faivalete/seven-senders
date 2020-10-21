@@ -7,9 +7,15 @@ import { createStore } from 'redux';
 import * as serviceWorker from './serviceWorker';
 
 import {rootReducer} from './store';
+import { compose } from 'redux';
 
-const store = createStore(rootReducer)
-
+/* eslint-disable no-underscore-dangle */
+const store = createStore(
+  rootReducer,
+  (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
+    (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+);
+/* eslint-enable */
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

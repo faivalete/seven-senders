@@ -2,13 +2,13 @@ import React from 'react';
 
 
 interface WithNextStepProps {
-    onValid: Function;
+    validate: Function;
   }
 
 const singleStepForm = <P extends object>(
     Component: React.ComponentType<P>
   ): React.FC<P & WithNextStepProps> => ({
-    onValid,
+    validate,
     ...props
   }: WithNextStepProps) => {
 

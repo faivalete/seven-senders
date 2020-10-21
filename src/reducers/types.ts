@@ -1,7 +1,12 @@
-import {Widget} from '../components/Widget';
+
+
+export type Widget = {
+  name: string;
+  language: string;
+}
 
 export interface WidgetsState {
-    widgets: Array<Widget>;
+  widgets: Array<Widget>;
 }
 
 export const ADD_WIDGET = 'ADD_WIDGET'

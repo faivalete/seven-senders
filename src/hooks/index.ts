@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import { Widget } from '../components/Widget';
+import { Widget } from '../reducers/types';
 
 
 const defaultValue = [];

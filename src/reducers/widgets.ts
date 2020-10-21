@@ -1,8 +1,11 @@
-import { WidgetsState, WidgetsActionTypes, ADD_WIDGET, REMOVE_WIDGET } from './types';
+import { useLocalStorageState } from '../hooks';
+import { WidgetsState, WidgetsActionTypes, ADD_WIDGET, REMOVE_WIDGET, Widget } from './types';
 
+
+const initialWidgets = window.localStorage.getItem('widgets');
 const initialState: WidgetsState = {
-    widgets: [],
-}
+    widgets: initialWidgets? JSON.parse(initialWidgets) as Array<Widget> : []
+};
 
 export function widgetsReducer(
   state = initialState,
@@ -12,7 +15,13 @@ export function widgetsReducer(
     case ADD_WIDGET: {
       return {
         ...state,
-        ...action.payload
+        widgets: [...state.widgets, action.payload],
+      }
+    }
+    case REMOVE_WIDGET: {
+      return {
+        ...state,
+        widgets: state.widgets.filter((widget, idx) => idx !== action.payload),
       }
     }
     default:

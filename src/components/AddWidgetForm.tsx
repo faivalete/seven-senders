@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 
 import StepName from './StepName';
 import StepLanguage from './StepLanguage';
@@ -6,37 +6,37 @@ import StepLanguage from './StepLanguage';
 type OwnProps = {
     step: number;
     nextStep: Function;
-    close: Function;
+    setLanguage: Function;
+    setName: Function;
 }
 type Props = OwnProps;
 
 enum Steps {
-    'NAME',
     'LANGUAGE',
+    'NAME',
 };
 
 
-const currentStep = (step: number, nextStep: Function, submit: Function) => {
-
-    switch(step) {
-        case Steps.NAME: 
-        return (<StepName nextStep={() => nextStep} />);
-        case Steps.LANGUAGE: 
-        return (<StepLanguage nextStep={() => submit} />);
-    }
-
-}
-
 function AddWidgetForm(props: Props) {
 
+    function handleSetName(value: string) {
+        props.setName(value);
+    }
 
-    const CurrentStep = currentStep(props.step, props.nextStep, props.close);
-
+    function handleSetLanguage(value: string) {
+        props.setLanguage(value);
+        props.nextStep();
+    }
 
     return (
         <>
         {
-            CurrentStep
+            props.step === Steps.NAME? 
+                <StepName nextStep={handleSetName} /> : null
+        }
+        {
+            props.step === Steps.LANGUAGE? 
+                <StepLanguage nextStep={handleSetLanguage} /> : null
         }
         </>
     )
